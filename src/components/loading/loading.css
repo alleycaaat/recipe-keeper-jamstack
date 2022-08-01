@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+/* sourcecode for loading screen: https://codepen.io/jeerapabeam/pen/VNBvjv used under MIT liscense */
+@-webkit-keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes loader {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+#wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(102, 102, 102, 0.5);
+}
+
+#loading-text {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #000;
+  width: 100px;
+  height: 30px;
+  margin: 0 0 0 -40px;
+  text-align: center;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 30px;
+}
+
+#loading-content {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -85px 0 0 -85px;
+}
+
+#loading-content:after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 15px;
+  bottom: 15px;
+}
+
+#loading-content:before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+}
+
+#loading-content {
+  border: 3px solid transparent;
+  border-top-color: #732091;
+  border-bottom-color: #45045c;
+  border-radius: 50%;
+  -webkit-animation: loader 3s linear infinite;
+          animation: loader 3s linear infinite;
+}
+
+#loading-content:before {
+  border: 3px solid transparent;
+  border-top-color: #9f5eb6;
+  border-bottom-color: #5a1075;
+  border-radius: 50%;
+  -webkit-animation: loader 4s linear infinite;
+          animation: loader 4s linear infinite;
+}
+
+#loading-content:after {
+  border: 3px solid transparent;
+  border-top-color: #833a9d;
+  border-bottom-color: #9f5eb6;
+  border-radius: 50%;
+  -webkit-animation: loader 4.5s linear infinite;
+          animation: loader 4.5s linear infinite;
+}
+/*# sourceMappingURL=loading.css.map */

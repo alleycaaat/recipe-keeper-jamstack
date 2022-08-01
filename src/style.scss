@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+$box-shadow: 5px 5px 5px 0px rgb(144, 144, 144);
+$invisible: rgba(0, 0, 0, 0);
+$blue: #342fa8;
+
+@mixin hover {
+    text-decoration: underline;
+    text-decoration-color: $blue;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Annie Use Your Telescope', cursive;
+    display: flex;
+    color: #444444;
+    min-height: 100%;
+    justify-content: center;
+    align-content: center;
+    background-color: rgba(159, 94, 182, 0.7);
+}
+p {
+    margin: 2px;
+}
+h4 {
+    text-align: center;
+    &.error {
+        color: rgba(255, 0, 0, 0.6);
+    }
+}
+.wrapper {
+    height: 100%;
+}
+.welcome {
+    line-height: 25px;
+    padding: 0 5px;
+    padding-top: 5px;
+    font-size: 21px;
+}
+
+//credit on home
+.credit {
+    flex-direction: column;
+    margin-top: 20px;
+    width: auto;
+    padding: 7px;
+    border: 2px solid #732091;
+    box-shadow: $box-shadow;
+    background-color: rgba(100, 100, 100, 0.3);
+    border-radius: 3px;
+    p {
+        color: #000;
+        text-align: center;
+        font-weight: 600;
+        font-size: 19px;
+    }
+    .smol {
+        font-size: 11px;
+    }
+    a {
+        cursor: pointer;
+        text-decoration: none;
+        color: $blue;
+        padding: 1px 2px;
+        border-radius: 3px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+//tabs
+.tabs {
+    width: 60%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5%;
+    .tab {
+        color: $blue;
+        font-size: 18px;
+        width: 33%;
+        height: auto;
+        padding: 7px 5px;
+        margin: 0 4px 0 0;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 5px 5px 0 0;
+        cursor: pointer;
+    }
+}
+.inactive {
+    background-color: lightGrey;
+    border: solid lightGrey;
+    border: 0 0 1px 0;
+}
+.active {
+    border: 0;
+    background-color: white;
+}
+
+//notecards
+.notepad {
+    width: 50vw;
+    min-width: 370px;
+    font-size: 18px;
+    margin-top: -2px;
+    position: relative;
+    margin: 0 auto 20px auto;
+    padding-bottom: 10px;
+    background-color: white;
+    box-shadow: $box-shadow;
+}
+.editor {
+    height: 100%;
+    overflow-y: auto;
+    .saved,
+    .default,
+    .new {
+        font-size: 16px;
+        padding: 5px 0;
+        margin-top: 0;
+    }
+}
+.entrylist {
+    margin-top: 6px;
+    padding: 0 5px;
+    .span {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 24px;
+        line-height: 25px;
+        margin-top: 1px;
+        a {
+            color: black;
+            text-decoration: none;
+            font-size: 21px;
+            &:hover {
+                @include hover;
+            }
+        }
+    }
+}
+.ddown {
+    display: flex;
+    flex-direction: row;
+    height: 24px;
+    #categories {
+        margin-top: 0px;
+    }
+    select {
+        width: auto;
+        margin: -4px 0 0 0;
+        border: 0;
+        margin-left: 7px;
+        font-family: 'Raleway', sans-serif;
+        font-size: 17px;
+        cursor: pointer;
+        &:hover {
+            @include hover;
+        }
+        &:active {
+            border: solid #342fa8;
+            border-bottom: 1px;
+        }
+    }
+    .viewall {
+        text-transform: uppercase;
+        font-family: 'Annie Use Your Telescope', cursive;
+        font-size: 24px;
+        border: 0;
+        margin-left: 15px;
+        margin-top: -8px;
+        background: $invisible;
+        cursor: pointer;
+        &:hover {
+            @include hover;
+        }
+    }
+}
+input {
+    border: 0;
+    margin: 0 0 0 5px;
+    padding-left: 5px;
+    font-size: 19px;
+    line-height: 25px;
+    background: $invisible;
+    display: block;
+    font-weight: 600;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    cursor: pointer;
+    width: 80%;
+    font-family: 'Annie Use Your Telescope', cursive;
+    &:hover {
+        @include hover;
+    }
+}
+.input {
+    padding-top: 6px;
+}
+::placeholder {
+    color: #444;
+}
+.ins {
+    line-height: 25px;
+    margin-left: 3px;
+    display: flex;
+    flex-direction: row;
+}
+.mod {
+    //width: 95%;
+    line-height: 25px;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: row;
+}
+.addy {
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+}
+.paper {
+    position: relative;
+    height: 100%;
+    margin: 0 auto 20px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: $box-shadow;
+}
+.header {
+    width: 100%;
+    left: 0;
+    top: -10px;
+    margin-bottom: -10px;
+    position: relative;
+    h1 {
+        padding: 8px 0 0 8px;
+        font-size: 38px;
+    }
+}
+.header::before {
+    content: '';
+    position: absolute;
+    border-bottom: solid rgba(255, 0, 0, 0.6);
+    width: 100%;
+    top: 43px;
+    height: 4px;
+}
+.blue {
+    min-height: 30vh;
+    background-image: repeating-linear-gradient(
+        white 0px,
+        white 24px,
+        teal 25px
+    );
+    padding-bottom: 10px;
+}
+
+//buttons and icons
+.buttons {
+    padding: 0 5px;
+    display: flex;
+    text-transform: uppercase;
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 24px;
+    border: 0;
+    border-radius: 5px;
+    background: $invisible;
+    cursor: pointer;
+    &:hover {
+        @include hover;
+    }
+}
+.submit {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+.x {
+    display: inline;
+    margin-left: auto;
+    margin-right: 0;
+    background: $invisible;
+    border: 0;
+    height: 23px;
+    cursor: pointer;
+    &:hover {
+        @include hover;
+    }
+}
+.close {
+    margin: 1px;
+    padding: 3px;
+    cursor: pointer;
+    background-color: $blue;
+    border-radius: 5px;
+    color: #fff;
+    float: right;
+}
+.icon {
+    background: $invisible;
+    border: 0;
+    padding: 1px;
+    &.trash {
+        margin-top: -5px;
+        margin-right: 5px;
+        height: 29px;
+        padding: 1px;
+        cursor: pointer;
+        &:hover {
+            background: rgba(16, 91, 202, 0.3);
+            border-radius: 10%;
+        }
+    }
+}
+
+//modal
+.modal {
+    transform: translate(50%, 80%);
+    width: 50%;
+    width: 70%;
+    transform: translate(21%, 50%);
+    border: 2px solid black;
+    h3 {
+        padding-top: 1px;
+        font-size: 23px;
+        text-align: center;
+    }
+    .input {
+        padding-top: 21px;
+    }
+    .buttons {
+        border: 2px solid $blue;
+        background-color: #fff;
+        font-size: 19px;
+    }
+}
