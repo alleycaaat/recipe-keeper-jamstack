@@ -9,7 +9,7 @@ const Saved = ({ list, cat, catList, handlerem, setLoading, handleEdit }) => {
     const [disp, setDisp] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [edit, setEdit] = useState('');
-
+console.log('saved',disp)
     //update searchterm state
     const handleSearch = (e) => {
         let sea = e.target.value;

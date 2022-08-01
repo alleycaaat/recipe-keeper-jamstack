@@ -11,7 +11,7 @@ const App = () => {
     const [loading, setLoading] = useState(false);
     const [entry, setEntry] = useState([]);
     const [cats, setCats] = useState([]);
-
+console.log(entry)
     const startUp = async () => {
         await api.readall().then((recipes) => {
             //initialize categories array with two values
