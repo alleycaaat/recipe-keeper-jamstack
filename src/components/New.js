@@ -57,20 +57,20 @@ const New = ({ setLoading, addRec }) => {
                 'Recipes cannot be saved without a name and URL'
             );
         }
-        //check for a valid name and link, then format the inputs before sending them
+        //check for a valid name and link, format the inputs before sending
         if (validn) {
             if (validl) {
-                let _cat;
-                let _link = link;
-                let _name = name.trim();
+                let ncat;
+                let nlink = link;
+                let nname = name.trim();
                 let newItem;
 
                 cat === ''
-                    ? (_cat = 'uncategorized')
-                    : (_cat = cat.toLocaleLowerCase().trim());
+                    ? (ncat = 'uncategorized')
+                    : (ncat = cat.toLocaleLowerCase().trim());
 
                 setLoading(true);
-                newItem = { _name, _link, _cat };
+                newItem = { nname, nlink, ncat };
                 addRec(newItem);
 
                 setInput({

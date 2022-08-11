@@ -5,16 +5,19 @@ import Home from './components/Home';
 import Saved from './components/Saved';
 import api from './api';
 import Loading from './components/loading';
+import Modal from 'react-modal';
+Modal.setAppElement('#root');
 
 const App = () => {
     const [active, setActive] = useState('Home');
     const [loading, setLoading] = useState(false);
     const [entry, setEntry] = useState([]);
     const [cats, setCats] = useState([]);
-console.log(entry)
+
+    //gets the recipes
     const startUp = async () => {
         await api.readall().then((recipes) => {
-            //initialize categories array with two values
+            //initialize categories array with two default values
             let catList = ['select a category', 'view all'];
             recipes.map((kitty) => {
                 if (!catList.includes(kitty.data.cat)) {
@@ -41,41 +44,43 @@ console.log(entry)
             setEntry(newList);
             //end the loading screen
             setLoading(false);
+        })
+        .catch((err) => {
+            console.log('error', err);
         });
     };
 
+    //hook to load recipes on initial render
     useEffect(() => {
         startUp();
     }, []);
 
-    //handles the categories state
+
+    //handles the categories state if a recipe is removed
+    //and it was the only one in the category
     const listCats = (kitty) => {
-        let newcats = [];
-        if (!cats.includes(kitty.data.cat)) {
-            newcats.push(kitty.data.cat);
-        }
-        setCats(newcats);
+        setCats(kitty);
     };
 
+    //remove a recipe
     const handlerem = async (title) => {
         //get the id from the recipe
         let id = title.data.id;
-
         await api
             .erase(id)
             .then((res) => {
                 console.log(res);
                 startUp();
-                
             })
             .catch((err) => {
                 console.log('API error', err);
             });
     };
 
+    //edit a recipe
     const handleEdit = async (edits) => {
+        //get the id from the recipe
         let id = edits.data.id;
-
         await api
             .edit(id, edits)
             .then((res) => {
@@ -87,9 +92,9 @@ console.log(entry)
             });
     };
 
+    //add a recipe
     const addRec = async (input) => {
-        console.log(input,' addred input')
-        let format = ({name:input._name, link:input._link, cat:input._cat})
+        let format = ({name:input.nname, link:input.nlink, cat:input.ncat})
         await api
             .create(format)
             .then((res) => {
@@ -104,6 +109,7 @@ console.log(entry)
     return (
         <div className='wrapper'>
             <div className='tabs'>
+            {/*  when a tab is clicked, it's set to active so that component shows */}
                 <button
                     className={
                         'tab' + (active === 'Home' ? ' active' : ' inactive')

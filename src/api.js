@@ -16,6 +16,7 @@ const create = (data) => {
     });
 };
 
+
 const erase = (id) => {
     return fetch('/.netlify/functions/erase', {
         method: 'POST',
@@ -39,7 +40,7 @@ const api = {
     create,
     readall,
     erase,
-    edit,
+    edit
 };
 
 export default api;

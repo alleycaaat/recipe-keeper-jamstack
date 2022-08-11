@@ -4,15 +4,16 @@ import { GoTrashcan, GoPencil } from 'react-icons/go';
 import Container from './Container';
 
 const Saved = ({ list, cat, catList, handlerem, setLoading, handleEdit }) => {
-    const [results, setResults] = useState([...list]);
+    const [results] = useState([...list]);
     const [searchterm, setSearchterm] = useState();
     const [disp, setDisp] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [edit, setEdit] = useState('');
-console.log('saved',disp)
-    //update searchterm state
+    const [expanded, setExpanded] = useState(false)
+
     const handleSearch = (e) => {
         let sea = e.target.value;
+        setExpanded(false)
         setSearchterm(sea);
         if (sea === cat[0]) {
             setDisp([]);
@@ -28,16 +29,15 @@ console.log('saved',disp)
     };
 
     //view all button
-    const viewAll = () => {
+    const viewAll = async () => {
         setDisp(list);
         setSearchterm('view all');
     };
 
-    //close the modal
-    const closeModal = ({ data }) => {
+    //handles edit button
+    const handleedit = (data) => {
         let changed = false;
-        let id = data.id;
-        setIsOpen(false);
+        let id = data.data.id;
         //check to see that a change actually occured
         const updated = disp.map((item, i) => {
             if (item.data.id === id && item !== data) {
@@ -46,11 +46,14 @@ console.log('saved',disp)
             }
             return item;
         });
-
         if (changed) {
             handleEdit(data);
             setDisp(updated);
         }
+    }
+    //close the modal
+    const closeModal = () => {
+        setIsOpen(false);
     };
 
     //remove button
@@ -58,26 +61,28 @@ console.log('saved',disp)
         setLoading(true);
         const newList = [...list];
         const newCats = [...cat];
-        var catIdx = cat.indexOf(kitty); //get index of category from category array
-        let results = newList.filter((itm) => {
-            return itm.data.cat.includes(kitty);
-        });
-
+        var catIdx = cat.indexOf(kitty); //get index of category from cat array
+        let results = filterCats(newList, kitty);
+        function filterCats(arr, el) {
+            return arr.filter(o => {
+                return o.data.cat.includes(el)
+            })
+        }
         //if viewing all recipes, remove selected item
         if (searchterm === 'view all') {
             newList.splice(idx, 1);
             setDisp(newList);
-            //if it's the only item in its category, remove the category from the list
+            //if it's the only item in its category, remove the category
             if (results.length <= 1) {
                 newCats.splice(catIdx, 1);
-                //send cats list to parent
+                //send cats to parent
                 catList(newCats);
                 let zero = newCats[0];
                 setSearchterm(zero);
             }
         } else {
             results.splice(idx, 1);
-            //if it's the only item in its category, remove the category from the list
+            //if it's the only item in its category, remove the category
             if (results.length === 0) {
                 newCats.splice(catIdx, 1);
                 setDisp([]);
@@ -86,8 +91,7 @@ console.log('saved',disp)
                 setDisp(results);
             }
         }
-
-        //send the recipe to the function that'll make the api call
+        //send the recipe to be removed
         handlerem(card);
     };
 
@@ -96,14 +100,10 @@ console.log('saved',disp)
         setEdit(key);
         setIsOpen(true);
     };
-
     return (
         <div className='editor'>
             <div className='header'>
                 <h1>Categories</h1>
-                <label htmlFor='categories' hidden>
-                    Categories:
-                </label>
             </div>
             <div className='blue'>
                 <div className='ddown'>
@@ -111,16 +111,18 @@ console.log('saved',disp)
                         name='categories'
                         id='categories'
                         onChange={handleSearch}
+                        onFocus={()=>setExpanded(true)}
+                        aria-expanded={expanded}
+                        onBlur={()=>setExpanded(false)}
                     >
                         {cat.map((kitten, index) => (
                             <option
+                                key={index}
                                 index={index}
                                 category={kitten}
                                 value={kitten}
                             >
-                                {searchterm === 'select a category'
-                                    ? 'select a category'
-                                    : kitten}
+                                {kitten}
                             </option>
                         ))}
                     </select>
@@ -134,7 +136,7 @@ console.log('saved',disp)
                         isOpen={isOpen}
                         data={edit}
                         closeModal={closeModal}
-                        handleEdit={handleEdit}
+                        handleedit={handleedit}
                     />
                 )}
                 <div

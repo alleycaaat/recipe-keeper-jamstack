@@ -1,7 +1,7 @@
 import React from 'react';
 import ShowModal from './Modal';
 
-const Container = ({ isOpen, data, closeModal, setLoading, handleEdit }) => {
+const Container = ({ isOpen, data, closeModal, setLoading, handleedit }) => {
     return (
         <>
             <ShowModal
@@ -9,7 +9,7 @@ const Container = ({ isOpen, data, closeModal, setLoading, handleEdit }) => {
                 item={data}
                 closeModal={closeModal}
                 setLoading={setLoading}
-                handleEdit={handleEdit}
+                handleedit={handleedit}
             />
         </>
     );

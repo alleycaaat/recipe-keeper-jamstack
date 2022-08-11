@@ -8,8 +8,7 @@ function getKey(path) {
 }
 exports.handler = async (event, context) => {
     const client = new faunadb.Client({
-        //secret: process.env.FAUNADB_SECRET,
-        secret: 'fnAEsCXSkaAARO9oHRVrQtvec46g_Ne466Iw1ri8',
+        secret: process.env.FAUNADB_SECRET,
         domain: 'db.us.fauna.com',
         port: 443,
         scheme: 'https',

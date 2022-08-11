@@ -1,63 +1,48 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../style.css';
-import Modal from 'react-modal';
+import ReactModal from 'react-modal';
 
-Modal.setAppElement('#root');
-
-const ShowModal = ({ isOpen, item, closeModal, setLoading, handleEdit }) => {
+const ShowModal = ({ isOpen, item, closeModal, setLoading, handleedit }) => {
     const [data, setData] = useState({
-        name: '',
-        link: '',
-        cat: '',
-        id: '',
+        name: item.data.name,
+        link: item.data.link,
+        cat: item.data.cat,
+        id: item.data.id,
     });
 
+    const rootsight = document.getElementById('root');
     const { link, name, cat, id } = data;
+
     const [errorMsg, setErrorMsg] = useState();
 
-    useEffect(() => {
-        startup();
-    }, []);
-    const startup = () => {
-        setData({
-            name: item.data.name,
-            link: item.data.link,
-            cat: item.data.cat,
-            id: item.data.id,
-        });
-    };
     const handleClose = () => {
-        console.log(' inside handle close ', data);
-        closeModal({ data });
+        rootsight.setAttribute('aria-hidden', 'false');
+        closeModal();
     };
 
     const editor = (e) => {
         e.preventDefault();
         //gives error message to indicate why the submission failed
-        if (link === '' || name === '') {
+        if (data.link === '' || data.name === '') {
             setErrorMsg('Recipes cannot be saved without a name and URL');
         }
-        let nlink = link;
-        let nname = name.trim();
+        //n before variable name indicates a duplicate as to not edit state improperly
+        let nlink = data.link;
+        let nname = data.name.trim();
         let newData;
         let ncat;
 
         //if no category given, mark it uncategorized otherwise remove whitespace and convert to lowercase
         cat === ''
             ? (ncat = 'uncategorized')
-            : (ncat = cat.toLocaleLowerCase().trim());
-        console.log(ncat, ' cat ');
+            : (ncat = data.cat.toLocaleLowerCase().trim());
 
-        newData = { nname, nlink, ncat, id };
-        setData({ name: nname, link: nlink, cat: ncat, id });
-        console.log(newData, ' showing new ');
+        newData = {
+            data: { name: nname, link: nlink, cat: ncat, id: data.id },
+        };
+
         setLoading(true);
-        handleClose(newData);
-        //handleEdit(newData);
-        //automatically close the modal after changes are saved
-        setTimeout(() => {
-            handleClose();
-        }, 700);
+        handleedit(newData);
     };
 
     const handleChange = (e) => {
@@ -67,23 +52,28 @@ const ShowModal = ({ isOpen, item, closeModal, setLoading, handleEdit }) => {
 
     return (
         <>
-            <Modal
+            <ReactModal
+                parentSelector={() => document.querySelector('#root')}
+                closeTimeoutMS={200}
                 className='modal'
                 isOpen={isOpen}
                 aria={{ labelledby: 'heading' }}
+                onRequestClose={handleClose}
             >
                 <div className='blue'>
-                    <button className='close' onClick={handleClose}>
+                    <button
+                        className='close'
+                        aria-label='close edit window'
+                        onClick={handleClose}
+                    >
                         close
                     </button>
                     <form onSubmit={editor}>
                         <h3 id='heading'>Edit Recipe Entry</h3>
                         <div className='input'>
                             <span className='mod'>
-                                <label hidden htmlFor='link'>
-                                    Web address:
-                                </label>
                                 <input
+                                    aria-label='edit recipe web address'
                                     className='addy'
                                     type='url'
                                     name='link'
@@ -93,10 +83,8 @@ const ShowModal = ({ isOpen, item, closeModal, setLoading, handleEdit }) => {
                                 />
                             </span>
                             <span className='mod'>
-                                <label hidden htmlFor='name'>
-                                    Recipe name:
-                                </label>
                                 <input
+                                    aria-label='edit recipe name'
                                     type='text'
                                     name='name'
                                     value={name}
@@ -105,10 +93,8 @@ const ShowModal = ({ isOpen, item, closeModal, setLoading, handleEdit }) => {
                                 />
                             </span>
                             <span className='mod'>
-                                <label hidden htmlFor='cat'>
-                                    Recipe category:
-                                </label>
                                 <input
+                                    aria-label='edit recipe category'
                                     type='text'
                                     name='cat'
                                     value={cat}
@@ -133,7 +119,7 @@ const ShowModal = ({ isOpen, item, closeModal, setLoading, handleEdit }) => {
                         </h4>
                     </form>
                 </div>
-            </Modal>
+            </ReactModal>
         </>
     );
 };
