@@ -54,7 +54,7 @@ const ShowModal = ({ isOpen, item, closeModal, setLoading, handleedit }) => {
         <>
             <ReactModal
                 parentSelector={() => document.querySelector('#root')}
-                closeTimeoutMS={200}
+                closeTimeoutMS={500}
                 className='modal'
                 isOpen={isOpen}
                 aria={{ labelledby: 'heading' }}

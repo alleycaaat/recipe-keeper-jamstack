@@ -8,6 +8,20 @@
           box-sizing: border-box;
 }
 
+.ReactModal__Overlay {
+  opacity: 0;
+  -webkit-transition: opacity 500ms ease-in-out;
+  transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
 body {
   font-family: 'Annie Use Your Telescope', cursive;
   display: -webkit-box;
@@ -392,6 +406,8 @@ input:hover {
   border-radius: 5px;
   color: #fff;
   float: right;
+  -webkit-transition: opacity 2000ms ease-in-out;
+  transition: opacity 2000ms ease-in-out;
 }
 
 .icon {

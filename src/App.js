@@ -156,7 +156,7 @@ const App = () => {
             {active === 'Home' && (
                 <div className='credit'>
                     <p>
-                        See my portfolio at{' '}
+                        Created by {' '}
                         <a
                             href='https://achulslander.com/'
                             rel='noopener noreferrer'
@@ -171,16 +171,16 @@ const App = () => {
                             target='_blank'
                             rel='noopener noreferrer'
                         >
-                            See my other pens
+                            See my pens
                         </a>
                     </p>
                     <p>
                         <a
-                            href='https://github.com/alleycaaat/recipe-keeper-web-app'
+                            href='https://github.com/alleycaaat/recipe-keeper-jamstack'
                             target='_blank'
                             rel='noopener noreferrer'
                         >
-                            See this project on GitHub
+                            View this project on GitHub
                         </a>
                     </p>
                 </div>

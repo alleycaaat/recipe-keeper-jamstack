@@ -16,9 +16,10 @@ $blue: #342fa8;
     padding: 0;
     box-sizing: border-box;
 }
+
 .ReactModal__Overlay {
     opacity: 0;
-    transition: opacity 2000ms ease-in-out;
+    transition: opacity 500ms ease-in-out;
 }
 .ReactModal__Overlay--after-open{
     opacity: 1;
@@ -27,9 +28,7 @@ $blue: #342fa8;
 .ReactModal__Overlay--before-close{
     opacity: 0;
 }
-.ReactModal__Body--open {
-    overflow: hidden;
-}
+
 body {
     font-family: 'Annie Use Your Telescope', cursive;
     display: flex;
@@ -162,6 +161,7 @@ h4 {
         }
     }
 }
+//drop-down selector
 .ddown {
     display: flex;
     flex-direction: row;
@@ -248,6 +248,7 @@ input {
     padding-bottom: 10px;
     box-shadow: $box-shadow;
 }
+//category header
 .header {
     width: 100%;
     left: 0;
@@ -317,6 +318,7 @@ input {
     border-radius: 5px;
     color: #fff;
     float: right;
+    transition: opacity 2000ms ease-in-out;
 }
 .icon {
     background: $invisible;
