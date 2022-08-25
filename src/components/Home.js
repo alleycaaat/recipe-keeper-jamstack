@@ -33,7 +33,7 @@ const Home = () => {
                     web-app as I wanted to actually be able to use it.
                     <br />
                     <br />
-                    Recipe Keeper's front-end uses ReactJS, including the useState and useEffect hooks, and SCSS. It's hosted on Netlify and the server is FaunaDB.
+                    Recipe Keeper's front-end uses ReactJS, including the useState and useEffect hooks, and SCSS. It's hosted on Netlify and useses a serverless database, FaunaDB.
                 </p>
             </div>
         </div>
