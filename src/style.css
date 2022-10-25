@@ -4,13 +4,11 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .ReactModal__Overlay {
   opacity: 0;
-  -webkit-transition: opacity 500ms ease-in-out;
   transition: opacity 500ms ease-in-out;
 }
 
@@ -23,17 +21,12 @@
 }
 
 body {
-  font-family: 'Annie Use Your Telescope', cursive;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  font-family: "Annie Use Your Telescope", cursive;
   display: flex;
   color: #444444;
   min-height: 100%;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
+  justify-content: center;
+  align-content: center;
   background-color: rgba(159, 94, 182, 0.7);
 }
 
@@ -44,7 +37,6 @@ p {
 h4 {
   text-align: center;
 }
-
 h4.error {
   color: rgba(255, 0, 0, 0.6);
 }
@@ -58,42 +50,35 @@ h4.error {
   padding: 0 5px;
   padding-top: 5px;
   font-size: 21px;
+  font-weight: 600;
 }
 
 .credit {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin-top: 20px;
   width: auto;
   padding: 7px;
   border: 2px solid #732091;
-  -webkit-box-shadow: 5px 5px 5px 0px #909090;
-          box-shadow: 5px 5px 5px 0px #909090;
-  background-color: rgba(100, 100, 100, 0.3);
+  box-shadow: 5px 5px 5px 0px rgb(144, 144, 144);
+  background-color: rgba(245, 245, 245, 0.3);
   border-radius: 3px;
 }
-
 .credit p {
   color: #000;
   text-align: center;
   font-weight: 600;
   font-size: 19px;
 }
-
 .credit .smol {
   font-size: 11px;
 }
-
 .credit a {
   cursor: pointer;
   text-decoration: none;
-  color: #342fa8;
+  color: #732091;
   padding: 1px 2px;
   border-radius: 3px;
 }
-
 .credit a:hover {
   text-decoration: underline;
 }
@@ -101,16 +86,10 @@ h4.error {
 .tabs {
   width: 60%;
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   margin-top: 5%;
 }
-
 .tabs .tab {
   color: #342fa8;
   font-size: 18px;
@@ -144,15 +123,13 @@ h4.error {
   margin: 0 auto 20px auto;
   padding-bottom: 10px;
   background-color: white;
-  -webkit-box-shadow: 5px 5px 5px 0px #909090;
-          box-shadow: 5px 5px 5px 0px #909090;
+  box-shadow: 5px 5px 5px 0px rgb(144, 144, 144);
 }
 
 .editor {
   height: 100%;
   overflow-y: auto;
 }
-
 .editor .saved,
 .editor .default,
 .editor .new {
@@ -165,74 +142,63 @@ h4.error {
   margin-top: 6px;
   padding: 0 5px;
 }
-
 .entrylist .span {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
   height: 24px;
   line-height: 25px;
   margin-top: 1px;
 }
-
 .entrylist .span a {
   color: black;
   text-decoration: none;
   font-size: 21px;
 }
-
 .entrylist .span a:hover {
   text-decoration: underline;
   -webkit-text-decoration-color: #342fa8;
           text-decoration-color: #342fa8;
 }
 
-.ddown {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  height: 24px;
+a {
+  color: #732091;
+  font-weight: bold;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
+.ddown {
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+}
 .ddown #categories {
   margin-top: 0px;
 }
-
 .ddown select {
   width: auto;
   margin: -4px 0 0 0;
   border: 0;
   margin-left: 7px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 17px;
   cursor: pointer;
 }
-
 .ddown select:hover {
   text-decoration: underline;
   -webkit-text-decoration-color: #342fa8;
           text-decoration-color: #342fa8;
 }
-
 .ddown select:active {
   border: solid #342fa8;
   border-bottom: 1px;
 }
-
 .ddown .viewall {
   text-transform: uppercase;
-  font-family: 'Annie Use Your Telescope', cursive;
+  font-family: "Annie Use Your Telescope", cursive;
   font-size: 24px;
   border: 0;
   margin-left: 15px;
@@ -240,7 +206,6 @@ h4.error {
   background: rgba(0, 0, 0, 0);
   cursor: pointer;
 }
-
 .ddown .viewall:hover {
   text-decoration: underline;
   -webkit-text-decoration-color: #342fa8;
@@ -260,9 +225,8 @@ input {
   word-spacing: 3px;
   cursor: pointer;
   width: 80%;
-  font-family: 'Annie Use Your Telescope', cursive;
+  font-family: "Annie Use Your Telescope", cursive;
 }
-
 input:hover {
   text-decoration: underline;
   -webkit-text-decoration-color: #342fa8;
@@ -273,15 +237,11 @@ input:hover {
   padding-top: 6px;
 }
 
-::-webkit-input-placeholder {
+::-moz-placeholder {
   color: #444;
 }
 
 :-ms-input-placeholder {
-  color: #444;
-}
-
-::-ms-input-placeholder {
   color: #444;
 }
 
@@ -292,25 +252,15 @@ input:hover {
 .ins {
   line-height: 25px;
   margin-left: 3px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 .mod {
   line-height: 25px;
   margin-left: 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 .addy {
@@ -324,8 +274,7 @@ input:hover {
   margin: 0 auto 20px auto;
   padding-top: 10px;
   padding-bottom: 10px;
-  -webkit-box-shadow: 5px 5px 5px 0px #909090;
-          box-shadow: 5px 5px 5px 0px #909090;
+  box-shadow: 5px 5px 5px 0px rgb(144, 144, 144);
 }
 
 .header {
@@ -335,14 +284,13 @@ input:hover {
   margin-bottom: -10px;
   position: relative;
 }
-
 .header h1 {
   padding: 8px 0 0 8px;
   font-size: 38px;
 }
 
 .header::before {
-  content: '';
+  content: "";
   position: absolute;
   border-bottom: solid rgba(255, 0, 0, 0.6);
   width: 100%;
@@ -358,18 +306,15 @@ input:hover {
 
 .buttons {
   padding: 0 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   text-transform: uppercase;
-  font-family: 'Annie Use Your Telescope', cursive;
+  font-family: "Annie Use Your Telescope", cursive;
   font-size: 24px;
   border: 0;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0);
   cursor: pointer;
 }
-
 .buttons:hover {
   text-decoration: underline;
   -webkit-text-decoration-color: #342fa8;
@@ -391,7 +336,6 @@ input:hover {
   height: 23px;
   cursor: pointer;
 }
-
 .x:hover {
   text-decoration: underline;
   -webkit-text-decoration-color: #342fa8;
@@ -406,7 +350,6 @@ input:hover {
   border-radius: 5px;
   color: #fff;
   float: right;
-  -webkit-transition: opacity 2000ms ease-in-out;
   transition: opacity 2000ms ease-in-out;
 }
 
@@ -415,7 +358,6 @@ input:hover {
   border: 0;
   padding: 1px;
 }
-
 .icon.trash {
   margin-top: -5px;
   margin-right: 5px;
@@ -423,35 +365,28 @@ input:hover {
   padding: 1px;
   cursor: pointer;
 }
-
 .icon.trash:hover {
   background: rgba(16, 91, 202, 0.3);
   border-radius: 10%;
 }
 
 .modal {
-  -webkit-transform: translate(50%, 80%);
-          transform: translate(50%, 80%);
+  transform: translate(50%, 80%);
   width: 50%;
   width: 70%;
-  -webkit-transform: translate(21%, 50%);
-          transform: translate(21%, 50%);
+  transform: translate(21%, 50%);
   border: 2px solid black;
 }
-
 .modal h3 {
   padding-top: 1px;
   font-size: 23px;
   text-align: center;
 }
-
 .modal .input {
   padding-top: 21px;
 }
-
 .modal .buttons {
   border: 2px solid #342fa8;
   background-color: #fff;
   font-size: 19px;
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

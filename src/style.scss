@@ -55,6 +55,7 @@ h4 {
     padding: 0 5px;
     padding-top: 5px;
     font-size: 21px;
+    font-weight: 600;
 }
 
 //credit on home
@@ -65,7 +66,7 @@ h4 {
     padding: 7px;
     border: 2px solid #732091;
     box-shadow: $box-shadow;
-    background-color: rgba(100, 100, 100, 0.3);
+    background-color: rgba(245, 245, 245, 0.3);
     border-radius: 3px;
     p {
         color: #000;
@@ -79,7 +80,7 @@ h4 {
     a {
         cursor: pointer;
         text-decoration: none;
-        color: $blue;
+        color: #732091;
         padding: 1px 2px;
         border-radius: 3px;
         &:hover {
@@ -159,6 +160,14 @@ h4 {
                 @include hover;
             }
         }
+    }
+}
+a {
+    color: #732091;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
     }
 }
 //drop-down selector

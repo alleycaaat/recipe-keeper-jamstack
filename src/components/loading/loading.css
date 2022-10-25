@@ -2,25 +2,20 @@
 /* sourcecode for loading screen: https://codepen.io/jeerapabeam/pen/VNBvjv used under MIT liscense */
 @-webkit-keyframes loader {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 @keyframes loader {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
-
 #wrapper {
   position: fixed;
   width: 100%;
@@ -40,7 +35,7 @@
   height: 30px;
   margin: 0 0 0 -40px;
   text-align: center;
-  font-family: 'Architects Daughter', cursive;
+  font-family: "Architects Daughter", cursive;
   font-size: 30px;
 }
 
@@ -55,7 +50,7 @@
 }
 
 #loading-content:after {
-  content: '';
+  content: "";
   position: absolute;
   left: 15px;
   right: 15px;
@@ -64,7 +59,7 @@
 }
 
 #loading-content:before {
-  content: '';
+  content: "";
   position: absolute;
   left: 5px;
   right: 5px;
@@ -97,5 +92,4 @@
   border-radius: 50%;
   -webkit-animation: loader 4.5s linear infinite;
           animation: loader 4.5s linear infinite;
-}
-/*# sourceMappingURL=loading.css.map */
+}/*# sourceMappingURL=loading.css.map */
