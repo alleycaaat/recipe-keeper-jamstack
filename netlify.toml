@@ -1,3 +1,4 @@
 [build]
-    functions="./functions"
-    publish="build/"
+    functions="functions"
+    command = "CI= npm run build"
+    publish="build"
