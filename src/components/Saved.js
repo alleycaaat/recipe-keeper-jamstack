@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../style.css';
 import { GoTrashcan, GoPencil } from 'react-icons/go';
 import Container from './Container';
 
