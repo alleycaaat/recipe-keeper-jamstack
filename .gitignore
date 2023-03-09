@@ -25,6 +25,7 @@ yarn-error.log*
 .env
 apitest.http
 functions/search.js
+
 # Local Netlify folder
 .netlify
 
