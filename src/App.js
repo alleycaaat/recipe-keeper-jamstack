@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import { create, edit, erase, readall } from './api';
+
+import Modal from 'react-modal';
+
 import New from './components/New';
 import Home from './components/Home';
 import Saved from './components/Saved';
-import { create, edit, erase, readall } from './api';
 import Loading from './components/loading';
-import Modal from 'react-modal';
+
 Modal.setAppElement('#root');
 
 const App = () => {
