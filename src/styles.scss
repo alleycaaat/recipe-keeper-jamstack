@@ -21,11 +21,11 @@ $blue: #342fa8;
     opacity: 0;
     transition: opacity 500ms ease-in-out;
 }
-.ReactModal__Overlay--after-open{
+.ReactModal__Overlay--after-open {
     opacity: 1;
 }
 
-.ReactModal__Overlay--before-close{
+.ReactModal__Overlay--before-close {
     opacity: 0;
 }
 
@@ -279,11 +279,9 @@ input {
 }
 .blue {
     min-height: 30vh;
-    background-image: repeating-linear-gradient(
-        white 0px,
-        white 24px,
-        teal 25px
-    );
+    background-image: repeating-linear-gradient(white 0px,
+            white 24px,
+            teal 25px);
     padding-bottom: 10px;
 }
 
@@ -348,8 +346,6 @@ input {
 
 //modal
 .modal {
-    transform: translate(50%, 80%);
-    width: 50%;
     width: 70%;
     transform: translate(21%, 50%);
     border: 2px solid black;

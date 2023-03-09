@@ -30,7 +30,9 @@ functions/search.js
 .netlify
 
 /.vscode
-/src/style.css
-/src/style.css.map
+/src/styles.css
+/src/styles.css.map
 /src/components/loading/loading.scss
 /src/components/loading/loading.css.map
+/src/style.css
+/src/style.css.map
