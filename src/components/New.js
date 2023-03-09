@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import '../style.css';
+import { useState } from 'react';
 import { GoPencil } from 'react-icons/go';
 import isURL from 'validator/lib/isURL';
 
@@ -22,7 +21,7 @@ const New = ({ setLoading, addRec }) => {
             }, 2100);
         }
     };
-    //validate the input: make sure URL is valid, that there is one,  and check for name.
+    //validate the input: make sure URL is valid, that there is one, and check for name.
     //if any of the above aren't true, valid state is false. also works so that an input can revert back to false if it previously passed
     //this section is pretty ugly
     const validate = (e) => {
@@ -48,6 +47,7 @@ const New = ({ setLoading, addRec }) => {
             } else setValidn(true);
         }
     };
+
     //submit button
     const handleSubmit = (e) => {
         e.preventDefault();

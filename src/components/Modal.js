@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../style.css';
 import ReactModal from 'react-modal';
 
 const ShowModal = ({ isOpen, item, closeModal, setLoading, handleedit }) => {
@@ -11,7 +10,7 @@ const ShowModal = ({ isOpen, item, closeModal, setLoading, handleedit }) => {
     });
 
     const rootsight = document.getElementById('root');
-    const { link, name, cat, id } = data;
+    const { link, name, cat } = data;
 
     const [errorMsg, setErrorMsg] = useState();
 

@@ -1,9 +1,8 @@
-import './style.css';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import New from './components/New';
 import Home from './components/Home';
 import Saved from './components/Saved';
-import api from './api';
+import { create, edit, erase, readall } from './api';
 import Loading from './components/loading';
 import Modal from 'react-modal';
 Modal.setAppElement('#root');
@@ -14,50 +13,50 @@ const App = () => {
     const [entry, setEntry] = useState([]);
     const [cats, setCats] = useState([]);
 
-    //gets the recipes
+    //get the recipes
     const startUp = async () => {
-        await api.readall().then((recipes) => {
-            //initialize categories array with two default values
-            let catList = ['select a category', 'view all'];
-            recipes.map((kitty) => {
-                if (!catList.includes(kitty.data.cat)) {
-                    catList.push(kitty.data.cat);
-                }
-                return catList;
-            });
-
-            let newList = [];
-            recipes.map((rec) => {
-                //map the recipes to get the id given by fauna
-                const key = getId(rec);
-                newList.push({
-                    data: {
-                        name: rec.data.name,
-                        link: rec.data.link,
-                        cat: rec.data.cat,
-                        id: key,
-                    },
+        await readall()
+            .then((recipes) => {
+                //initialize categories array with two default values
+                let catList = ['select a category', 'view all'];
+                recipes.map((kitty) => {
+                    if (!catList.includes(kitty.data.cat)) {
+                        catList.push(kitty.data.cat);
+                    }
+                    return catList;
                 });
-                return newList;
+
+                let newList = [];
+                recipes.map((rec) => {
+                    //map the recipes to get the id given by fauna
+                    const key = getId(rec);
+                    newList.push({
+                        data: {
+                            name: rec.data.name,
+                            link: rec.data.link,
+                            cat: rec.data.cat,
+                            id: key,
+                        },
+                    });
+                    return newList;
+                });
+                setCats(catList);
+                setEntry(newList);
+                //end the loading screen
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log('error', err);
             });
-            setCats(catList);
-            setEntry(newList);
-            //end the loading screen
-            setLoading(false);
-        })
-        .catch((err) => {
-            console.log('error', err);
-        });
     };
 
-    //hook to load recipes on initial render
+    //load recipes on render
     useEffect(() => {
         startUp();
     }, []);
 
 
-    //handles the categories state if a recipe is removed
-    //and it was the only one in the category
+    //if a recipe is removed and it was the only in the category
     const listCats = (kitty) => {
         setCats(kitty);
     };
@@ -66,8 +65,7 @@ const App = () => {
     const handlerem = async (title) => {
         //get the id from the recipe
         let id = title.data.id;
-        await api
-            .erase(id)
+        await erase(id)
             .then((res) => {
                 console.log(res);
                 startUp();
@@ -81,8 +79,7 @@ const App = () => {
     const handleEdit = async (edits) => {
         //get the id from the recipe
         let id = edits.data.id;
-        await api
-            .edit(id, edits)
+        await edit(id, edits)
             .then((res) => {
                 console.log(res);
                 setLoading(false);
@@ -94,9 +91,8 @@ const App = () => {
 
     //add a recipe
     const addRec = async (input) => {
-        let format = ({name:input.nname, link:input.nlink, cat:input.ncat})
-        await api
-            .create(format)
+        let format = ({ name: input.nname, link: input.nlink, cat: input.ncat });
+        await create(format)
             .then((res) => {
                 console.log(res);
                 startUp();
@@ -107,9 +103,8 @@ const App = () => {
     };
 
     return (
-        <div className='wrapper'>
-            <div className='tabs'>
-            {/*  when a tab is clicked, it's set to active so that component shows */}
+        <main className='wrapper'>
+            <nav className='tabs'>
                 <button
                     className={
                         'tab' + (active === 'Home' ? ' active' : ' inactive')
@@ -134,8 +129,8 @@ const App = () => {
                 >
                     New
                 </button>
-            </div>
-            <div className='notepad'>
+            </nav>
+            <section className='notepad'>
                 {loading && <Loading />}
                 {active === 'New' && (
                     <New addRec={addRec} setLoading={setLoading} />
@@ -152,7 +147,7 @@ const App = () => {
                         handlerem={handlerem}
                     />
                 )}
-            </div>
+            </section>
             {active === 'Home' && (
                 <div className='credit'>
                     <p>
@@ -171,21 +166,23 @@ const App = () => {
                             target='_blank'
                             rel='noopener noreferrer'
                         >
-                            See my pens
-                        </a>
-                    </p>
-                    <p>
+                            codepen
+                        </a>{' | '}
                         <a
                             href='https://github.com/alleycaaat/recipe-keeper-jamstack'
                             target='_blank'
                             rel='noopener noreferrer'
                         >
-                            View this project on GitHub
+                            GitHub
                         </a>
+                        {' | '}
+                        <a href='https://achulslander-recipe-keeper-jamstack.netlify.app/'
+                            target='_blank'
+                            rel='noopener noreferrer'>Demo</a>
                     </p>
                 </div>
             )}
-        </div>
+        </main>
     );
 };
 

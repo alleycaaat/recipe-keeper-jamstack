@@ -1,4 +1,3 @@
-import React from 'react';
 import ShowModal from './Modal';
 
 const Container = ({ isOpen, data, closeModal, setLoading, handleedit }) => {

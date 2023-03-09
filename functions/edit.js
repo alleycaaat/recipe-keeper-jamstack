@@ -1,5 +1,4 @@
 const faunadb = require('faunadb');
-require('dotenv').config();
 const q = faunadb.query;
 
 //regex returns just the id

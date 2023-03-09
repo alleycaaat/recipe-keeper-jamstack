@@ -1,5 +1,4 @@
 const faunadb = require('faunadb');
-require('dotenv').config();
 const q = faunadb.query;
 
 exports.handler = async (event, context) => {
@@ -12,20 +11,18 @@ exports.handler = async (event, context) => {
 
     return client
         .query(q.Paginate(q.Match(q.Ref('indexes/all_recipes'))))
-        .then((response) => {
+        .then(async (response) => {
             const recipesRefs = response.data;
 
             const getQuery = recipesRefs.map((ref) => {
                 return q.Get(ref);
             });
 
-            return client.query(getQuery).then((ret) => {
-                /* Victory! */
-                return {
-                    statusCode: 200,
-                    body: JSON.stringify(ret),
-                };
-            });
+            const ret = await client.query(getQuery);
+            return {
+                statusCode: 200,
+                body: JSON.stringify(ret),
+            };
         })
         .catch((error) => {
             /* D'aw crap */

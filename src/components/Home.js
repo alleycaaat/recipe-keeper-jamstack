@@ -1,7 +1,3 @@
-import React from 'react';
-import '../style.css';
-import '../index.js';
-
 const Home = () => {
     return (
         <div className='editor'>
@@ -30,10 +26,10 @@ const Home = () => {
                     >
                         Jamstack
                     </a>{' '}
-                    web-app as I wanted to actually be able to use it.
+                    web-app as I wanted to actually be able to use it.  Next step is to turn it add a log-in option and turn it into a mobile app.
                     <br />
                     <br />
-                    Recipe Keeper's front-end uses ReactJS, including the useState and useEffect hooks, and SCSS. It's hosted on Netlify and useses a serverless database, FaunaDB.
+                    Recipe Keeper's front-end uses ReactJS, including the useState and useEffect hooks, and SCSS. It's hosted on Netlify and useses a serverless database, Fauna.
                 </p>
             </div>
         </div>

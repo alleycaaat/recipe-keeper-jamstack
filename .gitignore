@@ -25,7 +25,11 @@ yarn-error.log*
 .env
 apitest.http
 functions/search.js
-style.scss
-style.css.map
 # Local Netlify folder
 .netlify
+
+/.vscode
+/src/style.css
+/src/style.css.map
+/src/components/loading/loading.scss
+/src/components/loading/loading.css.map

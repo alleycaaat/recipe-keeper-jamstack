@@ -1,14 +1,13 @@
-/* these API methods will call the functions in the backend to make the database things do */
+export const readall = async () => {
 
-const readall = () => {
-    return fetch('/.netlify/functions/readall').then((response) => {
-        return response.json();
-    });
+    return await fetch('/.netlify/functions/readall')
+        .then((response) => {
+            return response.json();
+        });
 };
 
-const create = (data) => {
-    console.log(data, ' api call ');
-    return fetch('/.netlify/functions/create', {
+export const create = async (data) => {
+    return await fetch('/.netlify/functions/create', {
         body: JSON.stringify(data),
         method: 'POST',
     }).then((response) => {
@@ -17,30 +16,21 @@ const create = (data) => {
 };
 
 
-const erase = (id) => {
-    return fetch('/.netlify/functions/erase', {
-        method: 'POST',
+export const erase = async (id) => {
+    return await fetch('/.netlify/functions/erase', {
+        method: 'DELETE',
         body: JSON.stringify(id),
     }).then((response) => {
         return response.json();
     });
 };
 
-const edit = (id, data) => {
+export const edit = async (id, data) => {
     //need to add id to end of the url so the backend can get it
-    return fetch(`/.netlify/functions/edit/${id}`, {
-        method: 'POST',
+    return await fetch(`/.netlify/functions/edit/${ id }`, {
+        method: 'PUT',
         body: JSON.stringify(data),
     }).then((response) => {
         return response.json();
     });
 };
-
-const api = {
-    create,
-    readall,
-    erase,
-    edit
-};
-
-export default api;
